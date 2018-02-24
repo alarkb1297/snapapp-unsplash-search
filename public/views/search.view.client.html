@@ -1,0 +1,59 @@
+<div class="container-fluid">
+
+    <div class="ab-search">
+
+        <img src="../logos/Unsplash%20Search.png" width="50%">
+
+
+        <input type="text" class="form-control" ng-model="model.searchQuery" placeholder="Search for...">
+        <div class="ab-btn-container">
+            <button class="btn btn-primary btn-block" type="button" ng-click="model.searchImage(model.searchQuery)">Search</button>
+        </div>
+
+
+        <div ng-show="model.errorMessage" class="alert pulse alert-danger pulse">
+            {{model.errorMessage}}
+        </div>
+
+        <div ng-if="!model.images && !model.errorMessage" class="well tab-content ab-carousel-well-search">
+            <h2 class="ab-text-search">Random Images...</h2>
+            <i>Click any image to download</i>
+            <ul class="list-group animated fadeInDown">
+                <li ng-repeat="image in model.randomImages" class="list-group-item media">
+                    <div class="ab-margin-bottom-spacing">
+                        <a href="{{image.links.download}}">
+                        <img ng-src="{{image.urls.small}}" sizes="50%"/>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="https://unsplash.com/@{{image.user.username}}">
+                            {{image.user.username}}
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div ng-if="model.images && !model.errorMessage" class="well tab-content ab-carousel-well-search">
+            <h2 class="ab-text-search">Search Results for "{{model.searchResultDisplayText}}"...</h2>
+            <i>Click any image to download</i>
+            <ul class="list-group animated fadeInDown">
+                <li ng-repeat="image in model.images" class="list-group-item media">
+                    <div class="ab-margin-bottom-spacing">
+                        <a href="{{image.links.download}}">
+                            <img ng-src="{{image.urls.small}}" sizes="50%"/>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="https://unsplash.com/@{{image.user.username}}">
+                            {{image.user.username}}
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
