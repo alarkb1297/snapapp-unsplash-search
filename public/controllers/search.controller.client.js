@@ -12,7 +12,6 @@
         model.searchQuery = $routeParams.searchQuery;
         model.searchResultDisplayText = model.searchQuery;
 
-
         function init() {
             if (model.searchQuery) {
                 searchImage(model.searchQuery);
@@ -24,9 +23,7 @@
                     });
             }
         }
-
         init();
-
 
         function searchImage(query) {
 
